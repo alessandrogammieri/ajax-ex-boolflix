@@ -1,0 +1,6 @@
+/* Boolflix */
+
+$( document ).ready(function () {
+
+
+});
