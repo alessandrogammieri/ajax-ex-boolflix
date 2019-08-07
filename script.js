@@ -1,7 +1,7 @@
 /* Boolflix */
 
 $( document ).ready(function () {
-  
+
   // FUNZIONE PER AVVIARE LA CHIAMATA AJAX
   function movieSearch () {
     // Ripuliamo i nostri risultati dopo ogni ricerca
@@ -32,7 +32,8 @@ $( document ).ready(function () {
           titolo: movies[i].title,
           originale: movies[i].original_title,
           lingua: movies[i].original_language,
-          voto: movies[i].vote_average
+          voto: movies[i].vote_average,
+          star: starVote(movies[i].vote_average)
           };
           // Stampo l'input a schermo
           var html = template(context);
@@ -60,5 +61,19 @@ $( document ).ready(function () {
       }
     }
   );
+
+  // FUNZIONE PER GENERARE LE STELLE
+  function starVote (voto) {
+    var star = "";
+    var stella = Math.floor(voto)/2;
+    for (var i = 1; i <= 5; i++) {
+      if (stella >= i) {
+        star += '<i class="fas fa-star"></i>';
+      } else {
+        star += '<i class="far fa-star"></i>';
+      }
+    }
+    return star;
+  }
 
 });

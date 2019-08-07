@@ -16,3 +16,7 @@ input, label {
 .film {
   padding: 20px 0;
 }
+
+.vote {
+  display: none
+}
