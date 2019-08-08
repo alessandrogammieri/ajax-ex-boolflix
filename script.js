@@ -32,6 +32,7 @@ $( document ).ready(function () {
         // Ciclo for per generare i dati dei film
         for (var i = 0; i < movies.length; i++) {
           var context = {
+          copertina: "http://image.tmdb.org/t/p/w342/" + movies[i].poster_path,
           titolo: movies[i].title,
           originale: movies[i].original_title,
           lingua: flagLang (movies[i].original_language),
@@ -75,6 +76,7 @@ $( document ).ready(function () {
         // Ciclo for per generare i dati delle serie tv
         for (var i = 0; i < tv.length; i++) {
           var context = {
+          locandina: "http://image.tmdb.org/t/p/w342/" + tv[i].poster_path,
           nome: tv[i].name,
           original: tv[i].original_name,
           language: flagLang (tv[i].original_language),

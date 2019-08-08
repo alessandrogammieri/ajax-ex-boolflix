@@ -21,6 +21,6 @@ input, label {
   display: none
 }
 
-.film img, .serietv img {
+.film img:last-child, .serietv img:last-child {
   width: 20px;
 }
