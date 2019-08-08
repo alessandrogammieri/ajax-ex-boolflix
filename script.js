@@ -2,10 +2,13 @@
 
 $( document ).ready(function () {
 
-  // FUNZIONE PER AVVIARE LA CHIAMATA AJAX
+  // CREO UN ARRAY CON LE LINGUE PRINCIPALI
+  var lang = ["it", "en", "fr", "es", "de"];
+
+  // FUNZIONE PER AVVIARE LA CHIAMATA AJAX DEI FILM
   function movieSearch () {
     // Ripuliamo i nostri risultati dopo ogni ricerca
-    $(".container").html("");
+    $(".resultfilm").html("");
     // Assegno ad una variabile il valore dell'input
     var inputVal = $("#site-search").val();
     // Assegno ad una variabile le proprietà della risposta
@@ -24,20 +27,63 @@ $( document ).ready(function () {
         // Dichiaro una variabile con i risultati della chiamata
         var movies = data.results;
         // Creo il clone del film con Handlebars
-        var source = $("#template").html();
+        var source = $("#template-film").html();
         var template = Handlebars.compile(source);
         // Ciclo for per generare i dati dei film
         for (var i = 0; i < movies.length; i++) {
           var context = {
           titolo: movies[i].title,
           originale: movies[i].original_title,
-          lingua: movies[i].original_language,
+          lingua: flagLang (movies[i].original_language),
           voto: movies[i].vote_average,
           star: starVote(movies[i].vote_average)
           };
           // Stampo l'input a schermo
           var html = template(context);
-          $(".container").append(html);
+          $(".resultfilm").append(html);
+        }
+      },
+      error: function (errore) {
+        alert ("C'è stato un errore: " + errore);
+      }
+    });
+  }
+
+  // FUNZIONE PER AVVIARE LA CHIAMATA AJAX DELLE SERIE TV
+  function tvSearch () {
+    // Ripuliamo i nostri risultati dopo ogni ricerca
+    $(".resultserie").html("");
+    // Assegno ad una variabile il valore dell'input
+    var inputVal = $("#site-search").val();
+    // Assegno ad una variabile le proprietà della risposta
+    var outData = {
+      api_key : "298ab0a1b1e3f83b64000dc095881f36",
+      language : "it-IT",
+      query : inputVal
+    }
+    // Richiediamo via ajax all'API le serie tv
+    $.ajax({
+      url : "https://api.themoviedb.org/3/search/tv",
+      method : "GET",
+      data : outData,
+      success: function (data) {
+        // Dichiaro una variabile con i risultati della chiamata
+        var tv = data.results;
+        // Creo il clone del film con Handlebars
+        var source = $("#template-serie").html();
+        var template = Handlebars.compile(source);
+        // Ciclo for per generare i dati delle serie tv
+        for (var i = 0; i < tv.length; i++) {
+          var context = {
+          nome: tv[i].name,
+          original: tv[i].original_name,
+          language: flagLang (tv[i].original_language),
+          vote: tv[i].vote_average,
+          stars: starVote(tv[i].vote_average)
+          };
+          // Stampo l'input a schermo
+          var html = template(context);
+          $(".resultserie").append(html);
         }
       },
       error: function (errore) {
@@ -49,6 +95,7 @@ $( document ).ready(function () {
   // AVVIO DELLA RICERCA TRAMITE IL CLICK
   $("button").click(function () {
     movieSearch ();
+    tvSearch ();
     $("#site-search").val("");
     }
   );
@@ -57,6 +104,7 @@ $( document ).ready(function () {
   $("#site-search").keypress(function () {
       if (event.which == 13) {
         movieSearch ();
+        tvSearch ();
         $("#site-search").val("");
       }
     }
@@ -74,6 +122,17 @@ $( document ).ready(function () {
       }
     }
     return star;
+  }
+
+  // FUNZIONE PER GENERARE LE BANDIERINE
+  function flagLang (lingua) {
+    var flag = "";
+    if (lang.includes(lingua)) {
+      flag = '<img src="media/' + lingua + '.png">';
+    } else {
+      flag = lingua;
+    }
+    return flag;
   }
 
 });

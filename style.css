@@ -13,10 +13,14 @@ input, label {
   margin: .4rem 0;
 }
 
-.film {
+.film, .serietv {
   padding: 20px 0;
 }
 
 .vote {
   display: none
+}
+
+.film img, .serietv img {
+  width: 20px;
 }
