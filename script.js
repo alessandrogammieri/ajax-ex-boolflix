@@ -94,14 +94,6 @@ $( document ).ready(function () {
     });
   }
 
-  // AVVIO DELLA RICERCA TRAMITE IL CLICK
-  $("button").click(function () {
-    movieSearch ();
-    tvSearch ();
-    $("#site-search").val("");
-    }
-  );
-
   // AVVIO DELLA RICERCA TRAMITE IL TASTO INVIO
   $("#site-search").keypress(function () {
       if (event.which == 13) {

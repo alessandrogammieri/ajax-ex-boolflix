@@ -5,13 +5,58 @@
   box-sizing: border-box;
 }
 
-label {
-  display: block;
-  font: 1rem 'Fira Sans', sans-serif;
+body {
+  background-color: #141414;
 }
-input, label {
-  margin: .4rem 0;
+
+/* REGOLE DELL'HEADER ----------------------------------- */
+/* Regole generali delle barra di navigazione */
+.navbar {
+  width: 100vw;
+  height: 70px;
+  background-color: #000;
 }
+.navbox {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  height: inherit;
+  margin: 0 auto;
+}
+.navleft {
+  width: 50%;
+  display: flex;
+  justify-content: flex-start;
+}
+.navright {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+/* Regole specifiche del search form  */
+.searchbar {
+  border: solid 1px #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 10px;
+}
+.navright i {
+  color: #fff;
+  font-size: 18px;
+}
+.navright input {
+  width: 200px;
+  height: 30px;
+  color: #fff;
+  border: none;
+  background-color: #000;
+  padding: 0 10px;
+}
+.navright input:focus {
+  outline: none;
+}
+
 
 .film, .serietv {
   padding: 20px 0;
