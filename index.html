@@ -26,36 +26,54 @@
         </div>
       </div>
     </header>
-    <div class="container">
-      <div class="resultfilm">
-        <!-- Spazio riempito dal Template Film -->
+    <main>
+      <div class="container">
+        <div class="mainbox">
+          <div class="resultfilm">
+            <!-- Spazio riempito dal Template Film -->
+          </div>
+          <div class="resultserie">
+            <!-- Spazio riempito dal Template Serie TV -->
+          </div>
+        </div>
       </div>
-      <div class="resultserie">
-        <!-- Spazio riempito dal Template Serie TV -->
-      </div>
-    </div>
+    </main>
 
     <!-- Template Handlebars Film -->
     <script id="template-film" type="text/x-handlebars-template">
       <!-- Film -->
-      <ul class="film">
-        <img src="{{{copertina}}}" alt="Copertina Film">
-        <li>Titolo: <span>{{titolo}}</span></li>
-        <li>Titolo Originale: <span>{{originale}}</span></li>
-        <li>Lingua: <span>{{{lingua}}}</span></li>
-        <li>Voto: <span class="vote">{{voto}}</span><span>{{{star}}}</span></li>
-      </ul>
+      <div class="film">
+        <div class="picture">
+          <img src="{{{copertina}}}" alt="{{titolo}}">
+        </div>
+        <div class="desck">
+            <h3>{{titolo}}</h3>
+            <p>Titolo Originale: <span>{{originale}}</span></p>
+            <div class="flag">
+              <p>Lingua: </p>
+              <span>{{{lingua}}}</span>
+            </div>
+            <p>Voto: <span class="vote">{{voto}}</span><span>{{{star}}}</span></p>
+        </div>
+      </div>
     </script>
     <!-- Template Handlebars Serie TV-->
     <script id="template-serie" type="text/x-handlebars-template">
       <!-- Serie TV -->
-      <ul class="serietv">
-        <img src="{{{locandina}}}" alt="Locandina Serie TV">
-        <li>Titolo: <span>{{nome}}</span></li>
-        <li>Titolo Originale: <span>{{original}}</span></li>
-        <li>Lingua: <span>{{{language}}}</span></li>
-        <li>Voto: <span class="vote">{{vote}}</span><span>{{{stars}}}</span></li>
-      </ul>
+      <div class="serietv">
+        <div class="picture">
+          <img src="{{{locandina}}}" alt="{{nome}}">
+        </div>
+        <div class="desck">
+            <h3>{{nome}}</h3>
+            <p>Titolo Originale: <span>{{original}}</span></p>
+            <div class="flag">
+              <p>Lingua: </p>
+              <span>{{{language}}}</span>
+            </div>    
+            <p>Voto: <span class="vote">{{vote}}</span><span>{{{stars}}}</span></p>
+        </div>
+      </div>
     </script>
     <!-- Script di JQuery -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

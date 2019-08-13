@@ -5,6 +5,15 @@ $( document ).ready(function () {
   // CREO UN ARRAY CON LE LINGUE PRINCIPALI
   var lang = ["it", "en", "fr", "es", "de"];
 
+  // FACCIAMO APPARIRE E SPARIRE LE INFO
+  $(document).on("mouseenter", ".picture", function() {
+    $(this).next("div").addClass("active");
+  });
+  $(document).on("mouseleave", ".desck", function() {
+    $(this).removeClass("active");
+  });
+
+
   // FUNZIONE PER AVVIARE LA CHIAMATA AJAX DEI FILM
   function movieSearch () {
     // Ripuliamo i nostri risultati dopo ogni ricerca
@@ -127,6 +136,6 @@ $( document ).ready(function () {
       flag = lingua;
     }
     return flag;
-  }
+  }  
 
 });

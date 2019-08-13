@@ -12,7 +12,7 @@ body {
 /* REGOLE DELL'HEADER ----------------------------------- */
 /* Regole generali delle barra di navigazione */
 .navbar {
-  width: 100vw;
+  width: 100%;
   height: 70px;
   background-color: #000;
 }
@@ -57,15 +57,68 @@ body {
   outline: none;
 }
 
-
-.film, .serietv {
-  padding: 20px 0;
+/* REGOLE DEL MAIN ------------------------------------- */
+.container {
+  overflow: auto;
+}
+.mainbox {
+  display: flex;
+  flex-direction: column;
+  width: 90%;
+  height: inherit;
+  margin: 0 auto;
+  padding-top: 50px;
+}
+.resultfilm, .resultserie {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
 }
 
+/* Regole specifiche dei Film e Serie Tv  */
+.film, .serietv {
+  position: relative;
+  padding: 20px 0;
+}
+.film .picture img, .serietv .picture img {
+  width: 260px;
+  height: 390px;
+}
+.flag img {
+  width: 20px;
+  margin-left: 2px;
+}
+.flag {
+  display: flex;
+  align-items: center;
+}
 .vote {
   display: none
 }
-
-.film img:last-child, .serietv img:last-child {
-  width: 20px;
+.desck {
+  display: none;
+  width: 260px;
+  height: 390px;
+  background-color: #000;
+  border: #fff solid 2px;
+  padding: 10px;
+  position: absolute;
+  top: 4.7%;
 }
+.desck h3, .desck p {
+  color: #fff;
+  line-height: 30px;
+}
+.fas, .far {
+  color: yellow;
+}
+
+.desck.active {
+  display: block;
+}
+
+
+
+
+
