@@ -5,6 +5,8 @@
   box-sizing: border-box;
 }
 
+@import url('https://fonts.googleapis.com/css?family=Lato:400,400i,700,700i,900,900i&display=swap');
+
 body {
   background-color: #141414;
 }
@@ -52,6 +54,8 @@ body {
   border: none;
   background-color: #000;
   padding: 0 10px;
+  font-family: 'Lato', sans-serif;
+  font-size: 14px;
 }
 .navright input:focus {
   outline: none;
@@ -85,13 +89,8 @@ body {
   width: 260px;
   height: 390px;
 }
-.flag img {
-  width: 20px;
-  margin-left: 2px;
-}
 .flag {
-  display: flex;
-  align-items: center;
+  position: relative; 
 }
 .vote {
   display: none
@@ -106,14 +105,25 @@ body {
   position: absolute;
   top: 4.7%;
 }
-.desck h3, .desck p {
+.desck h3, .desck p, .desck span {
   color: #fff;
   line-height: 30px;
+  font-family: 'Lato', sans-serif;
+}
+.flag span img {
+  width: 20px;
+  position: absolute;
+  top: 5px;
+  right: 160px;
+}
+.flag span p {
+  position: absolute;
+  top: 0px;
+  right: 168px;
 }
 .fas, .far {
   color: yellow;
 }
-
 .desck.active {
   display: block;
 }

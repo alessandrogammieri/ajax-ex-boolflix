@@ -13,7 +13,6 @@ $( document ).ready(function () {
     $(this).removeClass("active");
   });
 
-
   // FUNZIONE PER AVVIARE LA CHIAMATA AJAX DEI FILM
   function movieSearch () {
     // Ripuliamo i nostri risultati dopo ogni ricerca
@@ -40,14 +39,25 @@ $( document ).ready(function () {
         var template = Handlebars.compile(source);
         // Ciclo for per generare i dati dei film
         for (var i = 0; i < movies.length; i++) {
-          var context = {
-          copertina: "http://image.tmdb.org/t/p/w342/" + movies[i].poster_path,
-          titolo: movies[i].title,
-          originale: movies[i].original_title,
-          lingua: flagLang (movies[i].original_language),
-          voto: movies[i].vote_average,
-          star: starVote(movies[i].vote_average)
-          };
+          if (movies[i].poster_path == null) {
+            var context = {
+              copertina: "media/imagefilm-null.png",
+              titolo: movies[i].title,
+              originale: movies[i].original_title,
+              lingua: flagLang (movies[i].original_language),
+              voto: movies[i].vote_average,
+              star: starVote(movies[i].vote_average)
+              };
+          } else {
+            var context = {
+              copertina: "http://image.tmdb.org/t/p/w342/" + movies[i].poster_path,
+              titolo: movies[i].title,
+              originale: movies[i].original_title,
+              lingua: flagLang (movies[i].original_language),
+              voto: movies[i].vote_average,
+              star: starVote(movies[i].vote_average)
+            };
+          }
           // Stampo l'input a schermo
           var html = template(context);
           $(".resultfilm").append(html);
@@ -84,14 +94,25 @@ $( document ).ready(function () {
         var template = Handlebars.compile(source);
         // Ciclo for per generare i dati delle serie tv
         for (var i = 0; i < tv.length; i++) {
-          var context = {
-          locandina: "http://image.tmdb.org/t/p/w342/" + tv[i].poster_path,
-          nome: tv[i].name,
-          original: tv[i].original_name,
-          language: flagLang (tv[i].original_language),
-          vote: tv[i].vote_average,
-          stars: starVote(tv[i].vote_average)
-          };
+          if (tv[i].poster_path == null) {
+            var context = {
+              locandina: "media/imageserie-null.png",
+              nome: tv[i].name,
+              original: tv[i].original_name,
+              language: flagLang (tv[i].original_language),
+              vote: tv[i].vote_average,
+              stars: starVote(tv[i].vote_average)
+            };
+          } else {
+            var context = {
+              locandina: "http://image.tmdb.org/t/p/w342/" + tv[i].poster_path,
+              nome: tv[i].name,
+              original: tv[i].original_name,
+              language: flagLang (tv[i].original_language),
+              vote: tv[i].vote_average,
+              stars: starVote(tv[i].vote_average)
+            };
+          }
           // Stampo l'input a schermo
           var html = template(context);
           $(".resultserie").append(html);
@@ -133,7 +154,7 @@ $( document ).ready(function () {
     if (lang.includes(lingua)) {
       flag = '<img src="media/' + lingua + '.png">';
     } else {
-      flag = lingua;
+      flag = "<p>" + lingua + "</p>";
     }
     return flag;
   }  
