@@ -5,11 +5,19 @@ $( document ).ready(function () {
   // CREO UN ARRAY CON LE LINGUE PRINCIPALI
   var lang = ["it", "en", "fr", "es", "de"];
 
+  // CLICK SCOPRI DI PIU
+  $(document).on("click", ".bottone", function () {
+    $(this).next("div").addClass("action");
+  });
+  $(document).on("click", ".close", function () {
+    $(".table.action").removeClass("action");
+  });
+
   // FACCIAMO APPARIRE E SPARIRE LE INFO
-  $(document).on("mouseenter", ".picture", function() {
+  $(document).on("mouseenter", ".picture", function () {
     $(this).next("div").addClass("active");
   });
-  $(document).on("mouseleave", ".desck", function() {
+  $(document).on("mouseleave", ".desck", function () {
     $(this).removeClass("active");
   });
 
@@ -46,7 +54,10 @@ $( document ).ready(function () {
               originale: movies[i].original_title,
               lingua: flagLang (movies[i].original_language),
               voto: movies[i].vote_average,
-              star: starVote(movies[i].vote_average)
+              star: starVote(movies[i].vote_average),
+              overview: movies[i].overview,
+              date: movies[i].release_date,
+              foto: "http://image.tmdb.org/t/p/w342" + movies[i].backdrop_path
               };
           } else {
             var context = {
@@ -55,7 +66,10 @@ $( document ).ready(function () {
               originale: movies[i].original_title,
               lingua: flagLang (movies[i].original_language),
               voto: movies[i].vote_average,
-              star: starVote(movies[i].vote_average)
+              star: starVote(movies[i].vote_average),
+              overview: movies[i].overview,
+              date: movies[i].release_date,
+              foto: "http://image.tmdb.org/t/p/w342" + movies[i].backdrop_path
             };
           }
           // Stampo l'input a schermo
@@ -101,7 +115,10 @@ $( document ).ready(function () {
               original: tv[i].original_name,
               language: flagLang (tv[i].original_language),
               vote: tv[i].vote_average,
-              stars: starVote(tv[i].vote_average)
+              stars: starVote(tv[i].vote_average),
+              trama: tv[i].overview,
+              date: tv[i].first_air_date,
+              foto: "http://image.tmdb.org/t/p/w342" + tv[i].backdrop_path
             };
           } else {
             var context = {
@@ -110,7 +127,10 @@ $( document ).ready(function () {
               original: tv[i].original_name,
               language: flagLang (tv[i].original_language),
               vote: tv[i].vote_average,
-              stars: starVote(tv[i].vote_average)
+              stars: starVote(tv[i].vote_average),
+              trama: tv[i].overview,
+              date: tv[i].first_air_date,
+              foto: "http://image.tmdb.org/t/p/w342" + tv[i].backdrop_path
             };
           }
           // Stampo l'input a schermo

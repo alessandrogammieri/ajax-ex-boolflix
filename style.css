@@ -35,7 +35,6 @@ body {
   display: flex;
   justify-content: flex-end;
 }
-
 /* Regole specifiche del search form  */
 .searchbar {
   border: solid 1px #fff;
@@ -79,11 +78,10 @@ body {
   flex-wrap: wrap;
   justify-content: space-between;
 }
-
-/* Regole specifiche dei Film e Serie Tv  */
+/* Regole specifiche delle card Film e Serie Tv  */
 .film, .serietv {
   position: relative;
-  padding: 20px 0;
+  margin: 20px 0;
 }
 .film .picture img, .serietv .picture img {
   width: 260px;
@@ -103,7 +101,8 @@ body {
   border: #fff solid 2px;
   padding: 10px;
   position: absolute;
-  top: 4.7%;
+  top: 0;
+  overflow: auto;
 }
 .desck h3, .desck p, .desck span {
   color: #fff;
@@ -127,7 +126,68 @@ body {
 .desck.active {
   display: block;
 }
+.bottone {
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  background-color: #ff0101;
+  border: none;
+  padding: 10px;
+  margin-top: 15px;
+}
+.bottone:hover {
+  font-weight: 800;
+}
+.bottone:focus {
+  outline: #cc0000;
+}
+button .fas {
+  color: #fff;
+  margin-right: 5px;
+}
+/* Regole specifiche della Tabella  */
+.table {
+  display: none;
+  color: #fff;
+  font-family: 'Lato', sans-serif;
+  margin-top: 10px;
+  position: fixed;
+  top: 50%;
+  width: 1000px;
+  background-color: #000;
+  z-index: 300;
+  padding: 30px;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.table.action {
+  display: block;
+}
+.table p {
+  padding-top: 20px;
+}
+.table .close i {
+  color: #fff;
+  font-size: 25px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  padding: 30px;
+}
 
+/* Scrollbar */
+::-webkit-scrollbar {
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background: #fff;
+}
+::-webkit-scrollbar-thumb {
+  background: #cccccc;
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8e8e8e;
+}
 
 
 
