@@ -157,7 +157,7 @@ $( document ).ready(function () {
   // FUNZIONE PER GENERARE LE STELLE
   function starVote (voto) {
     var star = "";
-    var stella = Math.floor(voto)/2;
+    var stella = Math.floor(voto/2);
     for (var i = 1; i <= 5; i++) {
       if (stella >= i) {
         star += '<i class="fas fa-star"></i>';
