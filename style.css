@@ -80,7 +80,7 @@ body {
 /* Regole specifiche delle card Film e Serie Tv  */
 .film, .serietv {
   position: relative;
-  margin: 20px 26px 20px 0;
+  margin: 20px 10px 20px 0;
 }
 .film .picture img, .serietv .picture img {
   width: 260px;

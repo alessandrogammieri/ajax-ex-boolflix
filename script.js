@@ -47,31 +47,32 @@ $( document ).ready(function () {
         var template = Handlebars.compile(source);
         // Ciclo for per generare i dati dei film
         for (var i = 0; i < movies.length; i++) {
+          // Gestiamo il caso in cui la copertina manchi
+          var cop = "";
           if (movies[i].poster_path == null) {
-            var context = {
-              copertina: "media/imagefilm-null.png",
-              titolo: movies[i].title,
-              originale: movies[i].original_title,
-              lingua: flagLang (movies[i].original_language),
-              voto: movies[i].vote_average,
-              star: starVote(movies[i].vote_average),
-              overview: movies[i].overview,
-              date: movies[i].release_date,
-              foto: "http://image.tmdb.org/t/p/w342" + movies[i].backdrop_path
-              };
+            cop = "media/imagefilm-null.png";
           } else {
-            var context = {
-              copertina: "http://image.tmdb.org/t/p/w342/" + movies[i].poster_path,
-              titolo: movies[i].title,
-              originale: movies[i].original_title,
-              lingua: flagLang (movies[i].original_language),
-              voto: movies[i].vote_average,
-              star: starVote(movies[i].vote_average),
-              overview: movies[i].overview,
-              date: movies[i].release_date,
-              foto: "http://image.tmdb.org/t/p/w342" + movies[i].backdrop_path
-            };
+            cop = "http://image.tmdb.org/t/p/w342/" + movies[i].poster_path;
           }
+          // Gestiamo il caso in cui la foto manchi
+          var photo = "";
+          if (movies[i].backdrop_path == null) {
+            photo = "media/foto.png";
+          } else {
+            photo = "http://image.tmdb.org/t/p/w342/" + movies[i].backdrop_path;
+          }
+          // Dichiariamo in una variabile tutti i segnaposto
+          var context = {
+            copertina: cop,
+            titolo: movies[i].title,
+            originale: movies[i].original_title,
+            lingua: flagLang (movies[i].original_language),
+            voto: movies[i].vote_average,
+            star: starVote(movies[i].vote_average),
+            overview: movies[i].overview,
+            date: movies[i].release_date,
+            foto: photo
+          };
           // Stampo l'input a schermo
           var html = template(context);
           $(".resultfilm").append(html);
@@ -108,31 +109,32 @@ $( document ).ready(function () {
         var template = Handlebars.compile(source);
         // Ciclo for per generare i dati delle serie tv
         for (var i = 0; i < tv.length; i++) {
+          // Gestiamo il caso in cui la locandina manchi
+          var loc = "";
           if (tv[i].poster_path == null) {
-            var context = {
-              locandina: "media/imageserie-null.png",
-              nome: tv[i].name,
-              original: tv[i].original_name,
-              language: flagLang (tv[i].original_language),
-              vote: tv[i].vote_average,
-              stars: starVote(tv[i].vote_average),
-              trama: tv[i].overview,
-              date: tv[i].first_air_date,
-              foto: "http://image.tmdb.org/t/p/w342" + tv[i].backdrop_path
-            };
+            loc = "media/imageserie-null.png";
           } else {
-            var context = {
-              locandina: "http://image.tmdb.org/t/p/w342/" + tv[i].poster_path,
-              nome: tv[i].name,
-              original: tv[i].original_name,
-              language: flagLang (tv[i].original_language),
-              vote: tv[i].vote_average,
-              stars: starVote(tv[i].vote_average),
-              trama: tv[i].overview,
-              date: tv[i].first_air_date,
-              foto: "http://image.tmdb.org/t/p/w342" + tv[i].backdrop_path
-            };
+            loc = "http://image.tmdb.org/t/p/w342/" + tv[i].poster_path;
           }
+          // Gestiamo il caso in cui la foto manchi
+          var photo = "";
+          if (tv[i].backdrop_path == null) {
+            photo = "media/foto.png";
+          } else {
+            photo = "http://image.tmdb.org/t/p/w342/" + tv[i].backdrop_path;
+          }
+          // Dichiariamo in una variabile tutti i segnaposto
+          var context = {
+            locandina: loc,
+            nome: tv[i].name,
+            original: tv[i].original_name,
+            language: flagLang (tv[i].original_language),
+            vote: tv[i].vote_average,
+            stars: starVote(tv[i].vote_average),
+            trama: tv[i].overview,
+            date: tv[i].first_air_date,
+            foto: photo
+          };
           // Stampo l'input a schermo
           var html = template(context);
           $(".resultserie").append(html);
